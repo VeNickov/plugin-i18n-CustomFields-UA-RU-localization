@@ -60,8 +60,8 @@ $LANG_header = preg_replace('/(?:(?<=([a-z]{2}))).*/', '', $LANG);
 	$dircount="0";
 	$counter = "0";
 	$totalsize = 0;
-	$filesArray = [];
-	$dirsArray = [];
+	$filesArray = array();
+	$dirsArray = array();
 
 	$filenames = getFiles($path);
 	if (count($filenames) != 0) { 
@@ -102,8 +102,8 @@ $LANG_header = preg_replace('/(?:(?<=([a-z]{2}))).*/', '', $LANG);
 
 	echo '<table class="highlight" id="imageTable">';
 
-	if (count((array)$dirsSorted) != 0) {       
-		foreach ((array)$dirsSorted as $upload) {
+	if ($dirsSorted && count($dirsSorted) != 0) {       
+		foreach ($dirsSorted as $upload) {
 			echo '<tr class="All" >';  
 			echo '<td class="" colspan="5">';
 			$adm = ($subPath ? $subPath . "/" : "") . $upload['name']; 
@@ -113,7 +113,7 @@ $LANG_header = preg_replace('/(?:(?<=([a-z]{2}))).*/', '', $LANG);
 		}
 	}
 
-	if (count($filesSorted) != 0) { 			
+	if ($filesSorted && count($filesSorted) != 0) { 			
 		foreach ($filesSorted as $upload) {
 			$thumb = null; $thumbnailLink = null;
 			$subDir = ($subPath == '' ? '' : $subPath.'/');

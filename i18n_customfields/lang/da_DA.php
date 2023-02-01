@@ -1,5 +1,5 @@
 <?php
-$i18n = [
+$i18n = array(
     'ADD' => "Opret nyt felt",
     'BROWSE_FILES' => "Gennemse",
     'BROWSE_IMAGES' => "Gennemse",
@@ -33,4 +33,4 @@ $i18n = [
     'VIEW_HIERARCHICAL' => "Hierarkisk",
     'VIEW_TITLE' => "Efter titel",
     'WYSIWYG_EDITOR' => "WYSIWYG-editor"
-];
+);

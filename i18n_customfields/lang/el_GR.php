@@ -1,5 +1,5 @@
 <?php
-$i18n = [
+$i18n = array(
     'ADD' => "Προσθήκη νέου Πεδίου",
     'BROWSE_FILES' => "Περιήγηση",
     'BROWSE_IMAGES' => "Περιήγηση",
@@ -32,4 +32,4 @@ $i18n = [
     'VIEW_HIERARCHICAL' => "Ιεραρχικά",
     'VIEW_TITLE' => "Κατά Τίτλο",
     'WYSIWYG_EDITOR' => "WYSIWYG editor"
-];
+);

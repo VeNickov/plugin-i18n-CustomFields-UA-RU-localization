@@ -2,7 +2,7 @@
 /*
 Plugin Name: I18N Custom Fields
 Description: Custom Fields (I18N enabled)
-Version: 1.9.3
+Version: 1.9.4
 Author: Martin Vlcek
 Author URI: http://mvlcek.bplaced.net
 
@@ -26,7 +26,7 @@ define('I18N_CUSTOMFIELDS_FILE', 'customfields.xml');
 register_plugin(
 	$thisfile,
 	'I18N Custom Fields',
-	'1.9.3',
+	'1.9.4',
   'Martin Vlcek',
   'http://mvlcek.bplaced.net/',
   'Custom fields for pages (I18N enabled) - based on Mike Swan\'s plugin',
@@ -40,7 +40,7 @@ add_action('index-pretemplate', 'i18n_get_custom_fields'); // add hook to make c
 add_action('header', 'i18n_customfields_header');            // add hook to create styles for custom field editor.
 add_action('edit-extras', 'i18n_customfields_edit');         // add hook to create new inputs on the edit screen.
 add_action('changedata-save', 'i18n_customfields_save');     // add hook to save custom field values 
-add_action('plugins-sidebar', 'createSideMenu', [$thisfile, i18n_r('i18n_customfields/CUSTOMFIELDS_VIEW')]); 
+add_action('plugins-sidebar', 'createSideMenu', array($thisfile, i18n_r('i18n_customfields/CUSTOMFIELDS_VIEW'))); 
 add_filter('search-index-page', 'i18n_customfields_index');
 
 if (!i18n_customfields_is_frontend() && i18n_customfields_gsversion() == '3.0') {
@@ -65,21 +65,21 @@ function i18n_customfields_gsversion() {
 function i18n_customfield_defs() {
 	global $i18n_customfield_defs, $i18n_customfield_types;
   if ($i18n_customfield_defs === null) {
-    $i18n_customfield_defs = [];
-    $i18n_customfield_types = [];
+    $i18n_customfield_defs = array();
+    $i18n_customfield_types = array();
     $file = GSDATAOTHERPATH . I18N_CUSTOMFIELDS_FILE;
 	  if (file_exists($file)) {
       $data = getXML($file);
 		  $items = $data->item;
 		  if (count($items) > 0) {
 			  foreach ($items as $item) {
-          $cf = [];
+          $cf = array();
           $cf['key'] = (string) $item->desc;
           $cf['label'] = (string) $item->label;
           $cf['type'] = (string) $item->type;
           $cf['value'] = (string) $item->value;
           if ($item->type == "dropdown") {
-            $cf['options'] = [];
+            $cf['options'] = array();
             foreach ($item->option as $option) {
               $cf['options'][] = (string) $option;
             }
@@ -135,8 +135,9 @@ function i18n_get_custom_fields() {
 
 function i18n_get_custom_fields_from($data) {
   global $customfields;
-  $stdfields = ['pubDate', 'title', 'url', 'meta', 'metad', 'menu', 'menuStatus', 'menuOrder', 'template', 'parent', 'content', 'private'];
-  if (!isset($customfields)) $customfields = [];
+  $stdfields = array('pubDate','title','url','meta','metad','menu','menuStatus','menuOrder',
+                      'template','parent','content','private');
+  if (!isset($customfields)) $customfields = array();
   if ($data) foreach ($data->children() as $child) {
     if (!in_array($child->getName(), $stdfields) && (string) $child) {
       $customfields[$child->getName()] = (string) $child;
@@ -183,7 +184,7 @@ if (!function_exists('get_page_creation_date')) {
     $creDate = return_custom_field('creDate');
   	$myVar = $creDate ? date($i, strtotime($creDate)) : null;
   	if ($echo) {
-  		echo $myVar ?: '';
+  		echo $myVar ? $myVar : '';
   	} else {
   		return $myVar;
   	}
@@ -220,7 +221,7 @@ function i18n_customfields_index($item) {
         $item->addContent($name, html_entity_decode(strip_tags($item->$name), ENT_QUOTES, 'UTF-8'));
       } else if (@$def['type'] == 'checkbox') {
       	if ($item->$name) {
-      		$item->addTags($name, [$name]);
+      		$item->addTags($name, array($name));
       	}
       } else {
         $item->addContent($name, html_entity_decode($item->$name, ENT_QUOTES, 'UTF-8'));

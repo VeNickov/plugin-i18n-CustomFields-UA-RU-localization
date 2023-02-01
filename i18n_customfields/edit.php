@@ -10,13 +10,13 @@ function i18n_customfields_list_pages_json() {
     $pos = strpos($slug, '_');
     $lang = $pos !== false ? substr($slug, $pos+1) : null;
     $structure = I18nNavigationFrontend::getPageStructure(null, false, null, $lang);
-    $pages = [];
+    $pages = array();
     $nbsp = html_entity_decode('&nbsp;', ENT_QUOTES, 'UTF-8');
     $lfloor = html_entity_decode('&lfloor;', ENT_QUOTES, 'UTF-8');
     foreach ($structure as $page) {
       $text = ($page['level'] > 0 ? str_repeat($nbsp,5*$page['level']-2).$lfloor.$nbsp : '').cl($page['title']);
-      $link = find_i18n_url($page['url'], $page['parent'], $lang ?: return_i18n_default_language());
-      $pages[] = [$text, $link];
+      $link = find_i18n_url($page['url'], $page['parent'], $lang ? $lang : return_i18n_default_language());
+      $pages[] = array($text, $link);
     }
     return json_encode($pages);
   } else {
@@ -143,7 +143,7 @@ function i18n_customfields_customize_ckeditor($editorvar) { // copied and modifi
   foreach ($defs as $def) {
     $i++;
     $key = strtolower($def['key']);
-    $label = htmlspecialchars_decode($def['label']);
+    $label = $def['label'];
 		$type = $def['type'];
     $value = htmlspecialchars($id ? (isset($data_edit->$key) ? $data_edit->$key : '') : (isset($def['value']) ? $def['value'] : ''), ENT_QUOTES);
 		if ($col == 0) {

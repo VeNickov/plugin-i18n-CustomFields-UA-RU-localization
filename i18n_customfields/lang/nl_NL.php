@@ -1,5 +1,5 @@
 <?php
-$i18n = [
+$i18n = array(
     'ADD' => "Nieuw veld invoegen",
     'BROWSE_FILES' => "Bladeren",
     'BROWSE_IMAGES' => "Bladeren",
@@ -33,4 +33,4 @@ $i18n = [
     'VIEW_HIERARCHICAL' => "Hierarchisch",
     'VIEW_TITLE' => "Op titel",
     'WYSIWYG_EDITOR' => "WYSIWYG editor"
-];
+);

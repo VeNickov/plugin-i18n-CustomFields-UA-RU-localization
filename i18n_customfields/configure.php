@@ -1,7 +1,8 @@
 <?php
   function i18n_customfields_invalid_names() {
-    $stdfields = ['pubDate', 'title', 'url', 'meta', 'metad', 'menu', 'menuStatus', 'menuOrder', 'template', 'parent', 'content', 'private', 'creDate', 'user'];
-    $names = []; 
+    $stdfields = array('pubDate','title','url','meta','metad','menu','menuStatus','menuOrder',
+                        'template','parent','content','private','creDate','user');
+    $names = array(); 
     for ($i=0; isset($_POST['cf_'.$i.'_key']); $i++) {
       if (in_array($_POST['cf_'.$i.'_key'], $stdfields)) $names[] = $_POST['cf_'.$i.'_key'];
     }
@@ -65,9 +66,9 @@
       } else {
         $msg = i18n_r('i18n_customfields/SAVE_FAILURE');
       }
-      $defs = [];
+      $defs = array();
       for ($i=0; isset($_POST['cf_'.$i.'_key']); $i++) {
-        $cf = [];
+        $cf = array();
         $cf['key'] = htmlspecialchars(stripslashes($_POST['cf_'.$i.'_key']), ENT_QUOTES);
         $cf['label'] = htmlspecialchars(stripslashes($_POST['cf_'.$i.'_label']), ENT_QUOTES);
         $cf['type'] = htmlspecialchars(stripslashes($_POST['cf_'.$i.'_type']), ENT_QUOTES);
@@ -111,7 +112,7 @@
     i18n_customfields_confline($i, $def, 'sortable', $issearch);    
     $i++;
   }
-  i18n_customfields_confline($i, [], 'hidden', $issearch); 
+  i18n_customfields_confline($i, array(), 'hidden', $issearch); 
 ?> 
       <tr>
         <td colspan="5"><a href="#" class="add"><?php i18n('i18n_customfields/ADD'); ?></a></td>
@@ -166,9 +167,9 @@
 </script>
 <?php
 
-function i18n_customfields_confline($i, $def,  $issearch, $class='') {
+function i18n_customfields_confline($i, $def, $class='', $issearch) {
   $isdropdown = @$def['type'] == 'dropdown';
-  $indexable = !@$def['type'] || in_array(@$def['type'],['text', 'textfull', 'dropdown', 'textarea', 'checkbox']);
+  $indexable = !@$def['type'] || in_array(@$def['type'],array('text','textfull','dropdown','textarea', 'checkbox'));
   $options = "\r\n";
   if ($isdropdown && count($def['options']) > 0) {
     foreach ($def['options'] as $option) $options .= $option . "\r\n";

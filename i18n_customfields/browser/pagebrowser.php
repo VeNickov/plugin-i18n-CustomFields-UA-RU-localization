@@ -16,7 +16,7 @@
   $sitepath = $SITEURL;
 
   $isI18N = @$_GET['i18n'];
-  $pages = [];
+  $pages = array();
 	$dir_handle = @opendir(GSDATAPAGESPATH) or die("Unable to open pages directory");
 	while ($filename = readdir($dir_handle)) {
     if (strrpos($filename,'.xml') === strlen($filename)-4 && !is_dir(GSDATAPAGESPATH . $filename)) {
@@ -24,7 +24,7 @@
       if (!$isI18N || strpos($filename,'_') === false) {
         $url = '' . $data->url;
         if (!isset($pages[$url])) {
-          $pages[$url] = ['url' => $url, 'variants' => []];
+          $pages[$url] = array('url' => $url, 'variants' => array());
         }
         $pages[$url]['exists'] = true;
         $pages[$url]['parent'] = (string) $data->parent;
@@ -33,7 +33,7 @@
 			  $pages[$url]['menuOrder'] = (int) $data->menuOrder;
         $parent = (string) $data->parent;
         if ($parent && !isset($pages[$parent])) {
-          $pages[$parent] = ['url' => $parent, 'exists' => false, 'title' => '', 'menuOrder' => 99, 'parent' => null];
+          $pages[$parent] = array('url' => $parent, 'exists' => false, 'title' => '', 'menuOrder' => 99, 'parent' => null);
         }
       }
     }

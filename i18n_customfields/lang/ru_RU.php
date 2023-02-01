@@ -1,5 +1,5 @@
 <?php
-$i18n = [
+$i18n = array(
     'ADD' => "Добавить новое поле",
     'BROWSE_FILES' => "Обзор",
     'BROWSE_IMAGES' => "Обзор",
@@ -11,7 +11,6 @@ $i18n = [
     'DEFAULT_VALUE' => "Значение по умолчанию",
     'DELETE' => "Удалить поле",
     'DROPDOWN_BOX' => "Выпадающий список",
-    'FILE' => "File",
     'FILTER' => "Фильтр",
     'FUNCTIONS_DESCR' => "Эти поля могут быть доступны в вашей теме:",
     'GET_CUSTOM_FIELD_DESCR' => "отобразит соответствующее значение поля для текущей страницы",
@@ -34,4 +33,4 @@ $i18n = [
     'VIEW_HIERARCHICAL' => "Иерархический",
     'VIEW_TITLE' => "По названиям",
     'WYSIWYG_EDITOR' => "WYSIWYG редактор"
-];
+);
