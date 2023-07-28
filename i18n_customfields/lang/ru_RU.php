@@ -1,4 +1,5 @@
 <?php
+// Translated by Venick: https://github.com/VeNickov/
 $i18n = array(
     'ADD' => "Добавить новое поле",
     'BROWSE_FILES' => "Обзор",
@@ -11,6 +12,7 @@ $i18n = array(
     'DEFAULT_VALUE' => "Значение по умолчанию",
     'DELETE' => "Удалить поле",
     'DROPDOWN_BOX' => "Выпадающий список",
+    'FILE' => "Файл",
     'FILTER' => "Фильтр",
     'FUNCTIONS_DESCR' => "Эти поля могут быть доступны в вашей теме:",
     'GET_CUSTOM_FIELD_DESCR' => "отобразит соответствующее значение поля для текущей страницы",
