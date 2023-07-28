@@ -1,5 +1,4 @@
 <?php
-// Translated by Venick: https://github.com/VeNickov/
 $i18n = array(
     'ADD' => "Додати нове поле",
     'BROWSE_FILES' => "Огляд",
@@ -8,7 +7,7 @@ $i18n = array(
     'CHECKBOX' => "Галочка",
     'CUSTOMFIELDS_DESCR' => "Цей плагін дозволяє задавати власні поля користувача, які відображаються  при редагуванні сторінки.",
     'CUSTOMFIELDS_TITLE' => "Налаштування полів користувача",
-    'CUSTOMFIELDS_VIEW' => "Налаштовувані поля",
+    'CUSTOMFIELDS_VIEW' => "Поля користувача I18N",
     'DEFAULT_VALUE' => "Значення за замовчуванням",
     'DELETE' => "Видалити поле",
     'DROPDOWN_BOX' => "Випадаючий список",
